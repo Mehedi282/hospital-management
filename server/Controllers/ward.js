@@ -37,3 +37,43 @@ exports.fetchWard = async(req, res) => {
 
     }
 }
+
+
+exports.updateWard = async (req, res)=>{
+
+    const id =req.params.id
+    
+    try {
+        const updateWard = await Wards.findOneAndUpdate({_id: id}, {
+
+            WardId: req.body.WardId,
+            wardType: req.body.wardType,
+            wardRate: req.body.wardRate,
+            notes: req.body.notes,
+    
+        }, {new: true});
+
+        if (updateWard) {
+            return res.status(200).json({ message: "Ward updated succesfully" })
+        }
+
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+
+}
+
+exports.deleteWard = async (req, res)=>{
+
+    const id = req.params.id
+
+    try {
+        const deleteWard = await Wards.findOneAndDelete({_id: id});
+
+        if (deleteWard) {
+            return res.status(200).json({ message: "Ward deleted succesfully" })
+        }
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+}

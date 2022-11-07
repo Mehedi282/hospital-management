@@ -36,3 +36,43 @@ exports.fetchRoom = async(req, res) => {
 
     }
 }
+
+
+exports.updateRooms = async (req, res)=>{
+
+    const id =req.params.id
+    
+    try {
+        const updateRooms = await Rooms.findOneAndUpdate({_id: id}, {
+
+            roomid: req.body.roomid,
+            roomType: req.body.roomType,
+            roomRate: req.body.roomRate,
+            notes: req.body.notes, 
+    
+        }, {new: true});
+
+        if (updateRooms) {
+            return res.status(200).json({ message: "Rooms updated succesfully" })
+        }
+
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+
+}
+
+exports.deleteRooms = async (req, res)=>{
+
+    const id = req.params.id
+
+    try {
+        const deleteRooms = await Rooms.findOneAndDelete({_id: id});
+
+        if (deleteRooms) {
+            return res.status(200).json({ message: "Room deleted succesfully" })
+        }
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+}

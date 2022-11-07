@@ -38,3 +38,42 @@ exports.fetchService = async(req, res) => {
 
     }
 }
+
+exports.updateServices = async (req, res)=>{
+
+    const id =req.params.id
+    
+    try {
+        const updateServices = await Services.findOneAndUpdate({_id: id}, {
+            serviceId: req.body.serviceId,
+            serviceName: req.body.serviceName,
+            charge: req.body.charge,
+            duration: req.body.duration,
+            notes: req.body.notes,
+    
+        }, {new: true});
+
+        if (updateServices) {
+            return res.status(200).json({ message: "Service updated succesfully" })
+        }
+
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+
+}
+
+exports.deleteServices = async (req, res)=>{
+
+    const id = req.params.id
+
+    try {
+        const deleteServices = await Services.findOneAndDelete({_id: id});
+
+        if (deleteServices) {
+            return res.status(200).json({ message: "Service deleted succesfully" })
+        }
+    } catch (error) {
+        return res.status(400).json(error)
+    }
+}
