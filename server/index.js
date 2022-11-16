@@ -15,6 +15,8 @@ const AppointmentRoute = require('./Routes/appointment');
 const servicesRoute = require('./Routes/services');
 const RoomRoute = require('./Routes/room');
 const wardRoute = require('./Routes/ward');
+const medichinedtlsRoute = require('./Routes/medichinedtls');
+
 
 
 
@@ -36,6 +38,8 @@ app.use('/api', AppointmentRoute);
 app.use('/api', servicesRoute);
 app.use('/api', RoomRoute);
 app.use('/api', wardRoute);
+app.use('/api', medichinedtlsRoute);
+
 
 
 
