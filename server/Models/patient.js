@@ -5,7 +5,10 @@ const patientSchema = new mongoose.Schema({
     admitionDate: String,
     gender: String,
     patientName: String,
-    patientType: String,
+    patientType:{
+        type: String,
+        enum:["inpatient", "outpatient"]
+    },
     personalPhone: String,
     referral: String,
     roomId: String,

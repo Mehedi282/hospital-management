@@ -1,10 +1,14 @@
 const mongoose = require('mongoose')
 
 const wardSchema = new mongoose.Schema({
-    wardId: String,
+    WardId: Number,
     wardType: String,
     wardRate: String,
     notes: String,
+    bedNumber:{
+        type: Number,
+        default: 0
+    }
     
 }, {
     timestamps: true

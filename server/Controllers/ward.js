@@ -13,6 +13,7 @@ exports.createWard = async(req, res) => {
             wardType: req.body.wardType,
             wardRate: req.body.wardRate,
             notes: req.body.notes,
+            bedNumber: 0
             
         })
 
